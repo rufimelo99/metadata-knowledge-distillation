@@ -1,0 +1,8 @@
+ipykernel
+sentence_transformers
+numpy
+pandas
+torch
+tqdm
+tensorflow
+nltk
