@@ -3,7 +3,6 @@ import re
 def remove_html_tags(text):
     """Remove html tags from a string"""
     text=text.replace('&nbsp;','')
-    import re
     clean = re.compile('<.*?>')
     return re.sub(clean, '', text)
 
@@ -65,9 +64,7 @@ def removeUnicode(text):
     return re.sub(r"\xa0*", '', text)
 
 def is_mainly_text(text):
-    """function that receives a string and sees if 80% follows the pattern [a-zA-Z]
-    """
-    
+    """function that receives a string and sees if 80% follows the pattern [a-zA-Z]"""
     original_len = len(text)
 
     amount_of_spaces = text.count(' ')

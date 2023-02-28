@@ -21,7 +21,6 @@ class MetadataDistillationModel():
     ----------
     name : str
         The name of the pretrained BERT model to be used. The model must be available in the HuggingFace model hub.
-    
     Attributes
     ----------
     model : BertModel
@@ -77,11 +76,11 @@ class MetadataDistillationModel():
         return self.sentence_transformer.encode(sentence)
 
     def encode(self, sentence: str):
-        encoded_input = self.tokenizer( sentence, 
-                                        return_tensors='pt',    
-                                        max_length=512,
-                                        truncation=True,
-                                        padding='max_length')
+        encoded_input = self.tokenizer(sentence, 
+                                       return_tensors='pt', 
+                                       max_length=512, 
+                                       truncation=True, 
+                                       padding='max_length')
         with torch.no_grad():
             model_output = self.model(**encoded_input)
         
@@ -96,11 +95,11 @@ class MetadataDistillationModel():
 
 
     def forward(self, sentence: str):
-        encoded_input = self.tokenizer( sentence, 
-                                        return_tensors='pt',    
-                                        max_length=512,
-                                        truncation=True,
-                                        padding='max_length')
+        encoded_input = self.tokenizer(sentence,
+                                       return_tensors='pt', 
+                                       max_length=512,
+                                       truncation=True,
+                                       padding='max_length')
         #send to device
         encoded_input = {k: v.to(self.device) for k, v in encoded_input.items()}
 
@@ -114,7 +113,7 @@ class MetadataDistillationModel():
         return y_hat.to(self.device)
     
 
-    def train(self, x:pd.core.series.Series, y:torch.Tensor, epochs:int, lr:int=1e-6, batch_size:int=4):
+    def train(self, x:pd.core.series.Series, y:torch.Tensor, epochs:int, lr:int = 1e-6, batch_size:int = 4):
         self.model.train()
 
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=lr)
