@@ -1,4 +1,6 @@
 # metadata-knowledge-distillation
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/55133eb5109f4000934b6028388c3be6)](https://www.codacy.com/gh/rufimelo99/metadata-knowledge-distillation/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rufimelo99/metadata-knowledge-distillation&amp;utm_campaign=Badge_Grade)
+
 Trial Technique to improve information retrieval through dense vectors: Metadata Knowledge Distillation
 
 In our dataset, multiple documents have associated with them “Descritores”, brief tags manually annotated by experts. These tags intend to identify the main document subjects. These tags could indicate if a crime was committed with knives or even if it is related to COVID-19.
