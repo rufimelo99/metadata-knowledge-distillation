@@ -71,7 +71,6 @@ def is_mainly_text(text):
     if amount_of_spaces/original_len > 0.5:
         return False
 
-        
     text_only_letters = re.sub(r"[a-zA-Z]", '', text)
     final_len = len(text_only_letters)
 

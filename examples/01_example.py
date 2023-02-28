@@ -5,12 +5,10 @@ import torch
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
-import pickle
 import nltk
 import warnings
-from model import MetadataDistillationModel 
+from model import MetadataDistillationModel
 from utils.pre_processing import semicolons, removeSectionsNumber, removeParenthesis, removeUnicode, removeWeirdChars, remove_html_tags, replaceRoman
-
 
 tqdm.pandas()
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -48,7 +46,6 @@ if __name__ == '__main__':
     for index, row in tqdm(df_copy.iterrows(), total=df_copy.shape[0]):
         summary = row['sumario']
         summary = semicolons(removeSectionsNumber(removeParenthesis(removeUnicode(removeWeirdChars(remove_html_tags(replaceRoman(summary))))))).strip()
-        
         descritor = row['descritores']
         #get sentences using nltk
         sentences = nltk.sent_tokenize(summary)
@@ -56,9 +53,9 @@ if __name__ == '__main__':
         
         #add to dataframe
         for sentence in sentences:
-            df_sentences = df_sentences.append({'descritores':descritor, 
-                                                'sentences': sentence, 
-                                                'embedding': legal_bertimbau.encode_original(sentence)}, 
+            df_sentences = df_sentences.append({'descritores':descritor,
+                                                'sentences': sentence,
+                                                'embedding': legal_bertimbau.encode_original(sentence)},
                                                 ignore_index=True)
         
 

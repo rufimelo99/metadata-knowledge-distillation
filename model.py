@@ -16,7 +16,6 @@ class MetadataDistillationModel():
     """
     The model is initialized with a pretrained BERT model, which is then used to train the metadata distillation model.
 
-
     Parameters
     ----------
     name : str
@@ -35,7 +34,7 @@ class MetadataDistillationModel():
         The optimizer used to train the model.
     loss_fn : torch.nn
         The loss function used to train the model.
-    
+
     Methods
     -------
     save(path: str)
@@ -76,11 +75,7 @@ class MetadataDistillationModel():
         return self.sentence_transformer.encode(sentence)
 
     def encode(self, sentence: str):
-        encoded_input = self.tokenizer(sentence, 
-                                       return_tensors='pt', 
-                                       max_length=512, 
-                                       truncation=True, 
-                                       padding='max_length')
+        encoded_input = self.tokenizer(sentence, return_tensors='pt', max_length=512, truncation=True, padding='max_length')
         with torch.no_grad():
             model_output = self.model(**encoded_input)
         
