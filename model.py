@@ -59,7 +59,9 @@ class MetadataDistillationModel():
         self.model.to(self.device)
 
     def save(self, path: str):
-        self.sentence_transformer = SentenceTransformer("transformers-"+path)
+        self.model.save_pretrained(path+"-transformers")
+        self.tokenizer.save_pretrained(path+"-transformers")
+        self.sentence_transformer = SentenceTransformer(path+"-transformers")
         self.sentence_transformer.save(path)
 
     def load(self, path: str):
