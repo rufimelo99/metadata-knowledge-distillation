@@ -59,7 +59,6 @@ class MetadataDistillationModel():
         self.model.to(self.device)
 
     def save(self, path: str):
-        self.save(path)
         self.sentence_transformer = SentenceTransformer("transformers-"+path)
         self.sentence_transformer.save(path)
 
